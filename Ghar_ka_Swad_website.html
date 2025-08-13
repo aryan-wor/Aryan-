@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ghar ka Swad — Order Online</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fafafa; margin: 0; padding: 0; }
+    header { background: #d32f2f; color: white; padding: 15px; text-align: center; }
+    main { padding: 15px; }
+    .item { background: white; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+    .item h3 { margin: 0; }
+    button { background: green; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+    #cart { margin-top: 20px; background: white; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🍲 Ghar ka Swad</h1>
+    <p>Ghar jaisa khana — Seedha aapke ghar</p>
+  </header>
+
+  <main>
+    <h2>Menu</h2>
+
+    <div class="item">
+      <h3>Veg Thali — ₹120</h3>
+      <p>Daal, Chawal, Sabzi, Roti</p>
+      <button onclick="addToCart('Veg Thali', 120)">Add</button>
+    </div>
+
+    <div class="item">
+      <h3>Aloo Paratha (2) — ₹80</h3>
+      <p>Dahi aur Achar ke saath</p>
+      <button onclick="addToCart('Aloo Paratha', 80)">Add</button>
+    </div>
+
+    <h2>Order Summary</h2>
+    <div id="cart">Koi item nahi</div>
+    <p><strong>Total:</strong> ₹<span id="total">0</span></p>
+  </main>
+
+  <script>
+    let cart = [];
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      renderCart();
+    }
+    function renderCart() {
+      let cartDiv = document.getElementById('cart');
+      let total = 0;
+      if (cart.length === 0) {
+        cartDiv.innerHTML = 'Koi item nahi';
+      } else {
+        cartDiv
